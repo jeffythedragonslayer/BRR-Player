@@ -1658,9 +1658,9 @@
                 this.MaximizeBox = false;
                 this.Name = "frmBrrPlayer";
                 this.Text = "BRR Player v1.0";
-                this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form6_FormClosing);
-                this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form6_DragDrop);
-                this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form6_DragEnter);
+                this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBrrPlayer_FormClosing);
+                this.DragDrop += new System.Windows.Forms.DragEventHandler(this.frmBrrPlayer_DragDrop);
+                this.DragEnter += new System.Windows.Forms.DragEventHandler(this.frmBrrPlayer_DragEnter);
                 this.Paint += new System.Windows.Forms.PaintEventHandler(this.drawFormGradient);
                 this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownEvent);
                 this.menuStrip1.ResumeLayout(false);

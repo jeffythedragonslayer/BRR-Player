@@ -218,7 +218,7 @@ namespace AM4Play
             }
         }
 
-        private void Form6_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmBrrPlayer_FormClosing(object sender, FormClosingEventArgs e)
         {
             Stop();
 
@@ -274,7 +274,7 @@ namespace AM4Play
                         ResetSPC();
                     }
 
-					Play();
+                    Play();
                     SetPlayPauseString();
                 }
                 catch (Exception ex)
@@ -378,7 +378,7 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
                 case Keys.D5:
                 case Keys.D6:
                     int num = e.KeyCode - Keys.D1;
-					domainUpDown3.SelectedIndex = 5 - num;
+                    domainUpDown3.SelectedIndex = 5 - num;
                     break;
 
 				//[14:39:30] HertzDevil: zxcvbnm for the white keys
@@ -613,7 +613,7 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
         #endregion
 
         #region Drap/Drop Stuff
-        private void Form6_DragDrop(object sender, DragEventArgs e)
+        private void frmBrrPlayer_DragDrop(object sender, DragEventArgs e)
         {
             string[] f = e.Data.GetFormats();
 
@@ -651,7 +651,7 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
             return;
         }
 
-        private void Form6_DragEnter(object sender, DragEventArgs e)
+        private void frmBrrPlayer_DragEnter(object sender, DragEventArgs e)
         {
             string[] f = e.Data.GetFormats();
 

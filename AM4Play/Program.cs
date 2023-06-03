@@ -23,8 +23,8 @@ namespace AM4Play
 
         public static GVoices[] gvoices;
 
-		public static unsafe byte* dsp;
-		public static unsafe Voice* voice;
+        public static unsafe byte* dsp;
+        public static unsafe Voice* voice;
 
         private static int GetVolumeLevel(int level)
         {

@@ -930,7 +930,7 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
                 0x0a8c, 0x0b2c, 0x0bd6, 0x0c8b,
                 0x0d4a, 0x0e14, 0x0eea, 0x0fcd,
                 0x10be,
-        };
+                };
 
 		int current_tuning = -1;
 		int[] KGetPitch(int pitch, int multiplier = -1, int submult = -1)
@@ -1243,8 +1243,8 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
 
         private void LoadBRR(string fileName)
         {
-			string folder = Path.GetDirectoryName(Path.GetFullPath(fileName));
-			LoadPatterns(folder);
+            string folder = Path.GetDirectoryName(Path.GetFullPath(fileName));
+            LoadPatterns(folder);
 
             byte[] brr = File.ReadAllBytes(fileName);
             int loop = 0x0000;
@@ -1332,78 +1332,78 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
                 // S-DSP: 0x00
                 spc[0x10100] = hexParams[6]; // Volume
                 spc[0x10101] = hexParams[7];
-				fusionTrackBar1.Value = hexParams[6];
-				fusionTrackBar2.Value = hexParams[7];
-                
-				// Pitch processing
-				PitchMultiplier = PitchSubMultiplier = 0;
+                fusionTrackBar1.Value = hexParams[6];
+                fusionTrackBar2.Value = hexParams[7];
 
-				PitchMultiplier = hexParams[3];
-				PitchSubMultiplier = hexParams[4];
-				PitchNote = hexParams[5];
-				PitchTuning = 0;
+                // Pitch processing
+                PitchMultiplier = PitchSubMultiplier = 0;
 
-				if (PitchNote == 0)
-				{
-					PitchDSP = (PitchMultiplier << 8) | PitchSubMultiplier;
-					PitchMultiplier = 4;
-					PitchSubMultiplier = 0;
-				}
+                PitchMultiplier = hexParams[3];
+                PitchSubMultiplier = hexParams[4];
+                PitchNote = hexParams[5];
+                PitchTuning = 0;
 
-				UpdatePitch(false);
-				UpdateDomains();
+                if (PitchNote == 0)
+                {
+                        PitchDSP = (PitchMultiplier << 8) | PitchSubMultiplier;
+                        PitchMultiplier = 4;
+                        PitchSubMultiplier = 0;
+                }
 
-				spc[0x10102] = (byte)(PitchDSP & 255);
-				spc[0x10103] = (byte)(PitchDSP >> 8);
-				fusionTrackBar6.Value = PitchDSP;
+                UpdatePitch(false);
+                UpdateDomains();
+
+                spc[0x10102] = (byte)(PitchDSP & 255);
+                spc[0x10103] = (byte)(PitchDSP >> 8);
+                fusionTrackBar6.Value = PitchDSP;
 
                 spc[0x10104] = 0x00; // SRCN
 
                 spc[0x10105] = hexParams[0]; // ADSR 1
                 spc[0x10106] = hexParams[1]; // ADSR 2
-				spc[0x10107] = hexParams[2]; // GAIN
-				//fusionTrackBar3.Value = hexParams[0];
-				//fusionTrackBar4.Value = hexParams[1];
+                spc[0x10107] = hexParams[2]; // GAIN
+                //fusionTrackBar3.Value = hexParams[0];
+                //fusionTrackBar4.Value = hexParams[1];
 
-				int gain = hexParams[2];
+                int gain = hexParams[2];
 
-				if ((gain & 0x80) == 0)
-				{
-					comboBox1.SelectedIndex = 1;
-					fusionTrackBar5.Value = gain & 0x7F;
-				}
-				else
-				{
-					switch ((gain & 0x60))
-					{
-						case 0x40:
-							comboBox1.SelectedIndex = 2;
-							break;
-						case 0x60:
-							comboBox1.SelectedIndex = 3;
-							break;
-						case 0x00:
-							comboBox1.SelectedIndex = 4;
-							break;
-						case 0x20:
-							comboBox1.SelectedIndex = 5;
-							break;
-					}
+                if ((gain & 0x80) == 0)
+                {
+                        comboBox1.SelectedIndex = 1;
+                        fusionTrackBar5.Value = gain & 0x7F;
+                }
+                else
+                {
+                        switch ((gain & 0x60))
+                        {
+                                case 0x40:
+                                        comboBox1.SelectedIndex = 2;
+                                        break;
+                                case 0x60:
+                                        comboBox1.SelectedIndex = 3;
+                                        break;
+                                case 0x00:
+                                        comboBox1.SelectedIndex = 4;
+                                        break;
+                                case 0x20:
+                                        comboBox1.SelectedIndex = 5;
+                                        break;
+                        }
 
-					fusionTrackBar5.Value = gain & 0x1F;
-				}
+                        fusionTrackBar5.Value = gain & 0x1F;
+                }
 
-				enableNoiseToolStripMenuItem.SelectedIndex = 0;
+                enableNoiseToolStripMenuItem.SelectedIndex = 0;
 
-				currentGAIN = gain;
-				initADSR(hexParams[0], hexParams[1]);
+                currentGAIN = gain;
+                initADSR(hexParams[0], hexParams[1]);
 
-				if ((hexParams[0] & 0x80) != 0)
-				{
-					comboBox1.SelectedIndex = 0;
-					initADSR(hexParams[0], hexParams[1]);
-					setADSR(-1, -1, -1, -1);
-				}
+                if ((hexParams[0] & 0x80) != 0)
+                {
+                        comboBox1.SelectedIndex = 0;
+                        initADSR(hexParams[0], hexParams[1]);
+                        setADSR(-1, -1, -1, -1);
+                }
 
                 spc[0x1010C] = 0x7F; // MAIN VOLUME
                 spc[0x1011C] = 0x7F;
@@ -1412,7 +1412,7 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
 
                 spc[0x1014C] = 0x01; // Key On Voice 0
 
-				UpdateTrackers();
+                UpdateTrackers();
 
                 SetTitle("BRR Engine", fileName, true);
                 currentSPC = spc;
@@ -1433,10 +1433,10 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
 
         private bool IsValidBRR(byte[] brr)
         {
-			if (brr.Length == 0) return false;
-            if (brr.Length % 9 != 0) return false;
-            if ((brr[brr.Length - 9] & 1) == 0) return false;
-            return true;
+                if (brr.Length == 0) return false;
+                if (brr.Length % 9 != 0) return false;
+                if ((brr[brr.Length - 9] & 1) == 0) return false;
+                return true;
         }
 
         private bool IsValidSPC(byte[] spc)
@@ -1781,7 +1781,7 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
 		}
 
 		static string[] notes = new string[] { "c", "c+", "d", "d+", "e", "f",
-            "f+", "g", "g+", "a", "a+", "b" };
+                                                        "f+", "g", "g+", "a", "a+", "b" };
 
 		private void domainUpDown4_SelectedItemChanged(object sender, EventArgs e)
 		{

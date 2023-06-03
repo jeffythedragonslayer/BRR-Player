@@ -279,42 +279,42 @@ namespace AM4Play.SNESAPU
 	{
 		//Voice -----------08
 		[FieldOffset(0)]
-		public u16 vAdsr;								//ADSR parameters when KON was written
+		public u16 vAdsr;							//ADSR parameters when KON was written
 		[FieldOffset(2)]
-		public u8 vGain;								//Gain parameters when KON was written
+		public u8 vGain;							//Gain parameters when KON was written
 		[FieldOffset(3)]
 		public u8 vRsv;								//Changed ADSR/Gain parameters flag
 		[FieldOffset(4)]
-		public s16* sIdx;								//-> current sample in sBuf
+		public s16* sIdx;							//-> current sample in sBuf
 		
 		//Waveform --------06
 		[FieldOffset(8)]
-		public void* bCur;								//-> current block
+		public void* bCur;							//-> current block
 		[FieldOffset(12)]
 		public u8 bHdr;								//Block Header for current block
 		[FieldOffset(13)]
-		public MixFlags mFlg;								//Mixing flags (see MixF)
+		public MixFlags mFlg;							//Mixing flags (see MixF)
 		
 		//Envelope --------22
 		[FieldOffset(14)]
-		public u8 eMode;								//[3-0] Current mode (see EnvM)
+		public u8 eMode;							//[3-0] Current mode (see EnvM)
 		//[6-4] ADSR mode to switch into from Gain
 		//[7]   Envelope is idle
 		[FieldOffset(15)]
-		public u8 eRIdx;								//Index in RateTab (0-31)
+		public u8 eRIdx;							//Index in RateTab (0-31)
 		[FieldOffset(16)]
-		public u32 eRate;								//Rate of envelope adjustment (16.16)
+		public u32 eRate;							//Rate of envelope adjustment (16.16)
 		[FieldOffset(20)]
-		public u32 eCnt;								//Sample counter (16.16)
+		public u32 eCnt;							//Sample counter (16.16)
 		[FieldOffset(24)]
-		public u32 eVal;								//Current envelope value
+		public u32 eVal;							//Current envelope value
 		[FieldOffset(28)]
-		public s32 eAdj;								//Amount to adjust envelope height
+		public s32 eAdj;							//Amount to adjust envelope height
 		[FieldOffset(32)]
-		public u32 eDest;								//Envelope Destination
+		public u32 eDest;							//Envelope Destination
 		//Visualization ---08
 		[FieldOffset(36)]
-		public s32 vMaxL;								//Maximum absolute sample output
+		public s32 vMaxL;							//Maximum absolute sample output
 		[FieldOffset(40)]
 		public s32 vMaxR;
 		//Samples ---------52
@@ -329,25 +329,25 @@ namespace AM4Play.SNESAPU
 		fixed s16 sBuf[16];							//32 bytes for decompressed sample blocks
 		//Mixing ----------32
 		[FieldOffset(96)]
-		public f32 mTgtL;								//Target volume (floating-point routine only)
+		public f32 mTgtL;							//Target volume (floating-point routine only)
 		[FieldOffset(100)]
-		public f32 mTgtR;								// "  "
+		public f32 mTgtR;							// "  "
 		[FieldOffset(104)]
-		public s32 mChnL;								//Channel Volume (-24.7)
+		public s32 mChnL;							//Channel Volume (-24.7)
 		[FieldOffset(108)]
-		public s32 mChnR;								// "  "
+		public s32 mChnR;							// "  "
 		[FieldOffset(112)]
-		public u32 mRate;								//Pitch Rate after modulation (16.16)
+		public u32 mRate;							//Pitch Rate after modulation (16.16)
 		[FieldOffset(116)]
-		public u16 mDec;								//Pitch Decimal (.16) (used as delta for interpolation)
+		public u16 mDec;							//Pitch Decimal (.16) (used as delta for interpolation)
 		[FieldOffset(118)]
 		public u8 mSrc;								//Current source number
 		[FieldOffset(119)]
 		public u8 mKOn;								//Delay time from writing KON to output
 		[FieldOffset(120)]
-		public u32 mOrgP;								//Original pitch rate converted from the DSP (16.16)
+		public u32 mOrgP;							//Original pitch rate converted from the DSP (16.16)
 		[FieldOffset(124)]
-		public s32 mOut;								//Last sample output before chn vol (used for pitch mod)
+		public s32 mOut;							//Last sample output before chn vol (used for pitch mod)
 	}
 
 	unsafe static class DSP
@@ -507,29 +507,29 @@ namespace AM4Play.SNESAPU
 // ----- degrade-factory code [2009/07/11] -----
 typedef struct MixF
 {
-	b8	mute:1;									//Voice is muted (set by user)
-	u8	noise:1;								//Voice is noise (set by user)
-	b8	keyOff:1;								//Voice is in key off mode
-	b8	inactive:1;								//Voice is inactive, no samples are being played
-	b8	keyEnd:1;								//End block was just played
+	b8	mute:1;							//Voice is muted (set by user)
+	u8	noise:1;						//Voice is noise (set by user)
+	b8	keyOff:1;						//Voice is in key off mode
+	b8	inactive:1;						//Voice is inactive, no samples are being played
+	b8	keyEnd:1;						//End block was just played
 	u8	__r2:3;
 } MixF;
 // ----- degrade-factory code [END] -----
 
 typedef enum EnvM
 {
-	ENV_DEC,									//Linear decrease
-	ENV_EXP,									//Exponential decrease
-	ENV_INC,									//Linear increase
-	ENV_BENT = 6,								//Bent line increase
-	ENV_DIR,									//Direct setting
-	ENV_REL,									//Release mode (key off)
-	ENV_SUST,									//Sustain mode
-	ENV_ATTACK,									//Attack mode
-	ENV_DECAY = 13,								//Decay mode
+	ENV_DEC,							//Linear decrease
+	ENV_EXP,							//Exponential decrease
+	ENV_INC,							//Linear increase
+	ENV_BENT = 6,							//Bent line increase
+	ENV_DIR,							//Direct setting
+	ENV_REL,							//Release mode (key off)
+	ENV_SUST,							//Sustain mode
+	ENV_ATTACK,							//Attack mode
+	ENV_DECAY = 13,							//Decay mode
 } EnvM;
 
 #define	ENVM_IDLE	0x80						//Envelope is marked as idle, or not changing
-#define	ENVM_MODE	0xF							//Envelope mode is stored in lower four bits
+#define	ENVM_MODE	0xF						//Envelope mode is stored in lower four bits
 
 */

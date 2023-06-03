@@ -1517,6 +1517,7 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
 
         private unsafe void Play(bool force=false)
         {
+            working_pitch_update();
             if (!IsPaused||force)
             {
                 if (currentSPC != null && !IsPlaying && player == null)
@@ -1668,7 +1669,7 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
 			domainUpDown10.Text = fusionTrackBar5.Value.ToString("X2");
 		}
 
-		private void fusionTrackBar6_Scroll(object sender, EventArgs e)
+		private void working_pitch_update()
 		{
 			// pitch
 			DSP.SetDSPReg(0x02, (byte)(fusionTrackBar6.Value & 255));
@@ -1677,7 +1678,12 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
 			keyonoff();
 			PitchNote = 0;
 			PitchDSP = (ushort)fusionTrackBar6.Value;
-			UpdatePitch(false);
+			UpdatePitch(false); 
+		}
+
+		private void fusionTrackBar6_Scroll(object sender, EventArgs e)
+		{
+			working_pitch_update();
 		}
 
 		private void button5_Click(object sender, EventArgs e)

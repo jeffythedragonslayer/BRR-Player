@@ -342,7 +342,7 @@ namespace VilelaBot2.Util
             /*; set voice volume from master/base/A
             124e: f5 41 02  mov   a,$0241+x
             1251: cf        mul   ya
-            1252: e4 57     mov   a,$57             ; master volume
+            1252: e4 57     mov   a,$57             ; main volume
             1254: cf        mul   ya
             1255: dd        mov   a,y
             1256: cf        mul   ya

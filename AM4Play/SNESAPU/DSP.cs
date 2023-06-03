@@ -248,19 +248,19 @@ namespace AM4Play.SNESAPU
 	}
 
 	//Script700 DSP master parameters
-	//#define	S700_MVOL_L	0x00						//Master volume (left)
-	//#define	S700_MVOL_R	0x01						//Master volume (right)
+	//#define	S700_MVOL_L	0x00						//Main volume (left)
+	//#define	S700_MVOL_R	0x01						//Main volume (right)
 	//#define	S700_ECHO_L	0x02						//Echo volume (left)
 	//#define	S700_ECHO_R	0x03						//Echo volume (right)
 
 	enum S700_PARAM
 	{
 		/// <summary>
-		/// Master volume (left)
+		/// Main volume (left)
 		/// </summary>
 		S700_MVOL_L = 0,
 		/// <summary>
-		/// Master volume (right)
+		/// Main volume (right)
 		/// </summary>
 		S700_MVOL_R = 1,
 		/// <summary>

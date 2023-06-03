@@ -89,8 +89,8 @@ namespace AM4Play.SNESAPU
 		/// <param name="ppT64Cnt">64kHz timer counter</param>
 		/// <param name="ppDSP">128byte DSPRAM structure (see DSP.inc)</param>
 		/// <param name="ppVoice">VoiceMix structures of 8 voices (see DSP.inc)</param>
-		/// <param name="ppVMMaxL">Max master volume (left)</param>
-		/// <param name="ppVMMaxR">Max master volume (right)</param>
+		/// <param name="ppVMMaxL">Max main volume (left)</param>
+		/// <param name="ppVMMaxR">Max main volume (right)</param>
 		[DllImport("SNESAPU")]
 		public static extern void GetAPUData(u8** ppRAM, u8** ppXRAM, u8** ppOutPort, u32** ppT64Cnt, u8** ppDSP, Voice** ppVoice, u32** ppVMMaxL, u32** ppVMMaxR);
 

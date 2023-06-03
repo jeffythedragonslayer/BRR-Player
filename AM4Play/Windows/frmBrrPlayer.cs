@@ -1405,7 +1405,7 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
 					setADSR(-1, -1, -1, -1);
 				}
 
-                spc[0x1010C] = 0x7F; // MASTER VOLUME
+                spc[0x1010C] = 0x7F; // MAIN VOLUME
                 spc[0x1011C] = 0x7F;
 
                 spc[0x1015D] = 0x03; // SAMPLE DIR 0X400

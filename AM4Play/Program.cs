@@ -31,111 +31,111 @@ namespace AM4Play
             return (int)Math.Max(0, Math.Min(int.MaxValue, Math.Round(37.5 * Math.Log10(level * 0.010 + 1))));
         }
 
-		public static unsafe void GetInfo2(int chn)
-		{
-			int b = chn << 4;
+        public static unsafe void GetInfo2(int chn)
+        {
+                int b = chn << 4;
 
-            try
-            {
-                gvoices[chn].volLeft = Percent(0x80, 100, Math.Abs(unchecked((sbyte)dsp[b])));
-                gvoices[chn].volRight = Percent(0x80, 100, Math.Abs(unchecked((sbyte)dsp[b+1])));
-            }
-            catch (OverflowException)
-            {
-                if (dsp[b] == 0x80 && dsp[b + 1] == 0x80)
+                try
                 {
-                    gvoices[chn].volLeft = 100;
-                    gvoices[chn].volRight = 100;
+                        gvoices[chn].volLeft = Percent(0x80, 100, Math.Abs(unchecked((sbyte)dsp[b])));
+                        gvoices[chn].volRight = Percent(0x80, 100, Math.Abs(unchecked((sbyte)dsp[b+1])));
                 }
-                else if (dsp[b] == 0x80)
+                catch (OverflowException)
                 {
-                    gvoices[chn].volLeft = 100;
-                    gvoices[chn].volRight = Percent(0x80, 100, Math.Abs(((sbyte*)dsp)[b + 1]));
+                        if (dsp[b] == 0x80 && dsp[b + 1] == 0x80)
+                        {
+                            gvoices[chn].volLeft = 100;
+                            gvoices[chn].volRight = 100;
+                        }
+                        else if (dsp[b] == 0x80)
+                        {
+                            gvoices[chn].volLeft = 100;
+                            gvoices[chn].volRight = Percent(0x80, 100, Math.Abs(((sbyte*)dsp)[b + 1]));
+                        }
+                        else
+                        {
+                            gvoices[chn].volLeft = Percent(0x80, 100, Math.Abs(((sbyte*)dsp)[b]));
+                            gvoices[chn].volRight = 100;
+                        }
                 }
-                else
+
+                gvoices[chn].pitch = Percent(0x4000, 100, (dsp[b + 2] | (dsp[b + 3] << 8)) & 0x3fff);
+                gvoices[chn].envelope = Percent(0x80, 100, dsp[b + 8] & 127);
+
+                gvoices[chn].levelLeft = Math.Max(GetVolumeLevel(voice[chn].vMaxL), gvoices[chn].levelLeft - 5);
+                gvoices[chn].levelRight = Math.Max(GetVolumeLevel(voice[chn].vMaxR), gvoices[chn].levelRight - 5);
+
+                gvoices[chn].surroundL = (dsp[b] & 0x80) != 0;
+                gvoices[chn].surroundR = (dsp[b + 1] & 0x80) != 0;
+
+                voice[chn].vMaxL = 0;
+                voice[chn].vMaxR = 0;
+        }
+
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main(string[] args)
+        {
+                string arg0 = "NULL";
+                if (args.Length == 1)
                 {
-                    gvoices[chn].volLeft = Percent(0x80, 100, Math.Abs(((sbyte*)dsp)[b]));
-                    gvoices[chn].volRight = 100;
+                        arg0 = args[0];
                 }
-            }
 
-            gvoices[chn].pitch = Percent(0x4000, 100, (dsp[b + 2] | (dsp[b + 3] << 8)) & 0x3fff);
-            gvoices[chn].envelope = Percent(0x80, 100, dsp[b + 8] & 127);
+                if (!EnsureSingleInstance(arg0))
+                {
+                        return;
+                }
 
-            gvoices[chn].levelLeft = Math.Max(GetVolumeLevel(voice[chn].vMaxL), gvoices[chn].levelLeft - 5);
-            gvoices[chn].levelRight = Math.Max(GetVolumeLevel(voice[chn].vMaxR), gvoices[chn].levelRight - 5);
+                gvoices = new GVoices[8];
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new frmBrrPlayer(args));
+        }
 
-            gvoices[chn].surroundL = (dsp[b] & 0x80) != 0;
-            gvoices[chn].surroundR = (dsp[b + 1] & 0x80) != 0;
+        static bool EnsureSingleInstance(string arg0)
+        {
+                Process currentProcess = Process.GetCurrentProcess();
 
-            voice[chn].vMaxL = 0;
-            voice[chn].vMaxR = 0;
-		}
+                foreach (Process p in Process.GetProcesses())
+                {
+                        if (p.Id != currentProcess.Id && p.ProcessName.Equals(
+                                currentProcess.ProcessName, StringComparison.Ordinal))
+                        {
+                                SendArgs(p.MainWindowHandle, arg0);
+                                return false;
+                        }
+                }
 
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
-		[STAThread]
-		static void Main(string[] args)
-		{
-			string arg0 = "NULL";
-			if (args.Length == 1)
-			{
-				arg0 = args[0];
-			}
+                return true;
+        }
 
-			if (!EnsureSingleInstance(arg0))
-			{
-				return;
-			}
+        [DllImport("user32", EntryPoint = "SetForegroundWindow")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
 
-            gvoices = new GVoices[8];
-			Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmBrrPlayer(args));
-		}
+        [DllImport("user32")]
+        private static extern Boolean ShowWindow(IntPtr hWnd, Int32 nCmdShow);
 
-		static bool EnsureSingleInstance(string arg0)
-		{
-			Process currentProcess = Process.GetCurrentProcess();
+        public static bool SendArgs(IntPtr targetHWnd, string args)
+        {
+                Win32.CopyDataStruct cds = new Win32.CopyDataStruct();
+                try
+                {
+                        cds.cbData = (args.Length + 1) * 2;
+                        cds.lpData = Win32.LocalAlloc(0x40, cds.cbData);
+                        Marshal.Copy(args.ToCharArray(), 0, cds.lpData, args.Length);
+                        cds.dwData = (IntPtr)1;
+                        Win32.SendMessage(targetHWnd, Win32.WM_COPYDATA, IntPtr.Zero, ref cds);
+                }
+                finally
+                {
+                        cds.Dispose();
+                }
 
-			foreach (Process p in Process.GetProcesses())
-			{
-				if (p.Id != currentProcess.Id && p.ProcessName.Equals(
-					currentProcess.ProcessName, StringComparison.Ordinal))
-				{
-					SendArgs(p.MainWindowHandle, arg0);
-					return false;
-				}
-			}
-
-			return true;
-		}
-
-		[DllImport("user32", EntryPoint = "SetForegroundWindow")]
-		private static extern bool SetForegroundWindow(IntPtr hWnd);
-
-		[DllImport("user32")]
-		private static extern Boolean ShowWindow(IntPtr hWnd, Int32 nCmdShow);
-
-		public static bool SendArgs(IntPtr targetHWnd, string args)
-		{
-			Win32.CopyDataStruct cds = new Win32.CopyDataStruct();
-			try
-			{
-				cds.cbData = (args.Length + 1) * 2;
-				cds.lpData = Win32.LocalAlloc(0x40, cds.cbData);
-				Marshal.Copy(args.ToCharArray(), 0, cds.lpData, args.Length);
-				cds.dwData = (IntPtr)1;
-				Win32.SendMessage(targetHWnd, Win32.WM_COPYDATA, IntPtr.Zero, ref cds);
-			}
-			finally
-			{
-				cds.Dispose();
-			}
-
-			return true;
-		}
+                return true;
+        }
 
         /// <summary>
         /// Returns the frame rate.
@@ -146,16 +146,16 @@ namespace AM4Play
             return (int)Math.Ceiling(1000.0 / Options.FrameRate);
         }
 
-		/// <summary>
-		/// Convert a value from a specific scale to another scale.
-		/// </summary>
-		/// <param name="origBase">Scale original</param>
-		/// <param name="newBase">New scale</param>
-		/// <param name="value">Value to scale</param>
-		/// <returns>The new value</returns>
-		public static int Percent(double origBase, double newBase, double value)
-		{
-			return (int)Math.Ceiling(value * newBase / origBase);
-		}
+        /// <summary>
+        /// Convert a value from a specific scale to another scale.
+        /// </summary>
+        /// <param name="origBase">Scale original</param>
+        /// <param name="newBase">New scale</param>
+        /// <param name="value">Value to scale</param>
+        /// <returns>The new value</returns>
+        public static int Percent(double origBase, double newBase, double value)
+        {
+                return (int)Math.Ceiling(value * newBase / origBase);
+        }
 	}
 }

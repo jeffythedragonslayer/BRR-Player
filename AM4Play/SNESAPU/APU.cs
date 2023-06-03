@@ -38,9 +38,9 @@ namespace AM4Play.SNESAPU
 		public static byte* ram;
 		public static byte* outPort;
 		public static Voice* voice;
-        public static uint* VMAXL;
-        public static uint* VMAXR;
-        public static uint* T64COUNTER;
+                public static uint* VMAXL;
+                public static uint* VMAXR;
+                public static uint* T64COUNTER;
 
 		public static void GetPointers()
 		{
@@ -52,19 +52,19 @@ namespace AM4Play.SNESAPU
 					{
 						fixed (u8** portPtr = &outPort)
 						{
-                            fixed (Voice** ptr = &voice)
-                            {
-                                fixed (uint** VMAXL_PTR = &VMAXL)
-                                {
-                                    fixed (uint** VMAXR_PTR = &VMAXR)
-                                    {
-                                        fixed (uint** T64_PTR = &T64COUNTER)
-                                        {
-                                            GetAPUData(ramPtr, xramPtr, portPtr, T64_PTR, dspPtr, ptr, VMAXL_PTR, VMAXR_PTR);
-                                        }
-                                    }
-                                }
-                            }
+                                                    fixed (Voice** ptr = &voice)
+                                                    {
+                                                        fixed (uint** VMAXL_PTR = &VMAXL)
+                                                        {
+                                                            fixed (uint** VMAXR_PTR = &VMAXR)
+                                                            {
+                                                                fixed (uint** T64_PTR = &T64COUNTER)
+                                                                {
+                                                                    GetAPUData(ramPtr, xramPtr, portPtr, T64_PTR, dspPtr, ptr, VMAXL_PTR, VMAXR_PTR);
+                                                                }
+                                                            }
+                                                        }
+                                                    }
 						}
 					}
 				}
@@ -208,11 +208,11 @@ namespace AM4Play.SNESAPU
 		/// </summary>
 		/// <param name="time">1/64000ths of a second to seek forward (must be >= 0)</param>
 		/// <param name="fast">Use faster seeking method (may break some songs)</param>
-        [DllImport("SNESAPU")]
-        public static extern void SeekAPU(u32 time, b8 fast);
+                [DllImport("SNESAPU")]
+                public static extern void SeekAPU(u32 time, b8 fast);
 
-        [DllImport("SNESAPU")]
-        public static extern void SeekAPU(u32 time, u32* fast);
+                [DllImport("SNESAPU")]
+                public static extern void SeekAPU(u32 time, u32* fast);
 
 		/// <summary>
 		/// Set/Reset TimerTrick Compatible Function

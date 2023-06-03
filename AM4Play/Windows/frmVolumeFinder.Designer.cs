@@ -1,6 +1,6 @@
 ﻿namespace BRRPlay.Windows
 {
-	partial class Form3
+	partial class frmVolumeFinder
 	{
 		/// <summary>
 		/// Required designer variable.

@@ -16,7 +16,7 @@ using BRRPlay.Windows;
 
 namespace AM4Play
 {
-    public partial class Form6 : Form
+    public partial class frmBrrPlayer : Form
     {
 		int PitchMultiplier = 3;
 		int PitchSubMultiplier = 0;
@@ -25,7 +25,7 @@ namespace AM4Play
 		int PitchTuning = 0x00;
 
         #region (Un)Initializer
-        public Form6(string[] args)
+        public frmBrrPlayer(string[] args)
         {
             InitializeComponent();
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
@@ -2284,7 +2284,7 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
 				Path.GetFileName(currentFile), currentAdsr1, currentAdsr2, currentGAIN,
 				PitchMultiplier, PitchSubMultiplier);
 
-			Form1 form = new Form1(result, "AMK Instrument Table");
+			frmAmkInstTable form = new frmAmkInstTable(result, "AMK Instrument Table");
 			form.Owner = this;
 			form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			form.ShowDialog();
@@ -2328,26 +2328,26 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
 					 PitchDSP & 0xFF, PitchNote, fusionTrackBar1.Value, fusionTrackBar2.Value);
 			}
 
-			Form1 form = new Form1(result, "Pattern Table");
+			frmAmkInstTable form = new frmAmkInstTable(result, "Pattern Table");
 			form.Owner = this;
 			form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			form.ShowDialog();
 		}
 
-		Form2 volCalc;
-		Form3 volCalc2;
+		frmVolumeCalc volCalc;
+		frmVolumeFinder volCalc2;
 
 		private void volumeCalculatorToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (volCalc == null)
 			{
-				volCalc = new Form2();
+				volCalc = new frmVolumeCalc();
 				volCalc.Owner = this;
 				volCalc.Show();
 			}
 			else if (volCalc.IsDisposed)
 			{
-				volCalc = new Form2();
+				volCalc = new frmVolumeCalc();
 				volCalc.Owner = this;
 				volCalc.Show();
 			}
@@ -2361,13 +2361,13 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
 		{
 			if (volCalc2 == null)
 			{
-				volCalc2 = new Form3();
+				volCalc2 = new frmVolumeFinder();
 				volCalc2.Owner = this;
 				volCalc2.Show();
 			}
 			else if (volCalc2.IsDisposed)
 			{
-				volCalc2 = new Form3();
+				volCalc2 = new frmVolumeFinder();
 				volCalc2.Owner = this;
 				volCalc2.Show();
 			}

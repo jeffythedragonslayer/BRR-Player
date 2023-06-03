@@ -1,6 +1,6 @@
 ﻿namespace BRRPlay.Windows
 {
-	partial class Form1
+	partial class frmAmkInstTable
 	{
 		/// <summary>
 		/// Required designer variable.

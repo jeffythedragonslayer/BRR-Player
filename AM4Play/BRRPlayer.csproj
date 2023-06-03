@@ -63,29 +63,29 @@
     </Compile>
     <Compile Include="VolumeCalc.cs" />
     <Compile Include="Win32.cs" />
-    <Compile Include="Windows\Form3.cs">
+    <Compile Include="Windows\frmVolumeFinder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <Compile Include="Windows\frmVolumeFinder.Designer.cs">
+      <DependentUpon>frmVolumeFinder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Form1.cs">
+    <Compile Include="Windows\frmAmkInstTable.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Windows\frmAmkInstTable.Designer.cs">
+      <DependentUpon>frmAmkInstTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Form2.cs">
+    <Compile Include="Windows\frmVolumeCalc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="Windows\frmVolumeCalc.Designer.cs">
+      <DependentUpon>frmVolumeCalc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Form6.cs">
+    <Compile Include="Windows\frmBrrPlayer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Form6.Designer.cs">
-      <DependentUpon>Form6.cs</DependentUpon>
+    <Compile Include="Windows\frmBrrPlayer.Designer.cs">
+      <DependentUpon>frmBrrPlayer.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomForms\FusionTrackBar.cs">
       <SubType>Component</SubType>
@@ -124,17 +124,17 @@
     <Compile Include="CustomForms\VerticalProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="Windows\Form3.resx">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <EmbeddedResource Include="Windows\frmVolumeFinder.resx">
+      <DependentUpon>frmVolumeFinder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Windows\frmAmkInstTable.resx">
+      <DependentUpon>frmAmkInstTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="Windows\frmVolumeCalc.resx">
+      <DependentUpon>frmVolumeCalc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Form6.resx">
-      <DependentUpon>Form6.cs</DependentUpon>
+    <EmbeddedResource Include="Windows\frmBrrPlayer.resx">
+      <DependentUpon>frmBrrPlayer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

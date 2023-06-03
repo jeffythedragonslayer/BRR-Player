@@ -1,6 +1,6 @@
 ﻿namespace AM4Play
 {
-    partial class Form6
+    partial class frmBrrPlayer
     {
         /// <summary>
         /// Required designer variable.

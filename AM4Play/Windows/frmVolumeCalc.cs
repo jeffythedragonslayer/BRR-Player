@@ -9,9 +9,9 @@ using VilelaBot2.Util;
 
 namespace BRRPlay.Windows
 {
-	public partial class Form2 : Form
+	public partial class frmVolumeCalc : Form
 	{
-		public Form2()
+		public frmVolumeCalc()
 		{
 			InitializeComponent();
 		}

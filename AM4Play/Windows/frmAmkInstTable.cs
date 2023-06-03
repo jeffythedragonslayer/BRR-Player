@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace BRRPlay.Windows
 {
-	public partial class Form1 : Form
+	public partial class frmAmkInstTable : Form
 	{
-		public Form1(string text, string title)
+		public frmAmkInstTable(string text, string title)
 		{
 			InitializeComponent();
 			Text = title;

@@ -92,7 +92,7 @@ namespace AM4Play
             gvoices = new GVoices[8];
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form6(args));
+            Application.Run(new frmBrrPlayer(args));
 		}
 
 		static bool EnsureSingleInstance(string arg0)

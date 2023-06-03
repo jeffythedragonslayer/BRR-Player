@@ -27,134 +27,134 @@ namespace AM4Play
         #region (Un)Initializer
         public frmBrrPlayer(string[] args)
         {
-            InitializeComponent();
-            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+                InitializeComponent();
+                this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
-			for (int i = 255; i >= 0; --i)
-			{
-				string s = i.ToString("X2");
-				domainUpDown1.Items.Add(s);
-				domainUpDown2.Items.Add(s);
-				domainUpDown5.Items.Add(s);
+                for (int i = 255; i >= 0; --i)
+                {
+                        string s = i.ToString("X2");
+                        domainUpDown1.Items.Add(s);
+                        domainUpDown2.Items.Add(s);
+                        domainUpDown5.Items.Add(s);
 
-				domainUpDown6.Items.Add(s);
-				domainUpDown7.Items.Add(s);
-				//domainUpDown8.Items.Add(s);
-				//domainUpDown9.Items.Add(s);
-				domainUpDown10.Items.Add(s);
-			}
-			domainUpDown1.SelectedIndex = 0x03 ^ 0xFF;
-			domainUpDown2.SelectedIndex = 0x00 ^ 0xFF;
-			domainUpDown5.SelectedIndex = 0x00 ^ 0xFF;
-			domainUpDown6.SelectedIndex = 0x00 ^ 0xFF;
-			domainUpDown7.SelectedIndex = 0x00 ^ 0xFF;
-			//domainUpDown8.SelectedIndex = 0x00 ^ 0xFF;
-			//domainUpDown9.SelectedIndex = 0x00 ^ 0xFF;
-			domainUpDown10.SelectedIndex = 0x00 ^ 0xFF;
+                        domainUpDown6.Items.Add(s);
+                        domainUpDown7.Items.Add(s);
+                        //domainUpDown8.Items.Add(s);
+                        //domainUpDown9.Items.Add(s);
+                        domainUpDown10.Items.Add(s);
+                }
+                domainUpDown1.SelectedIndex = 0x03 ^ 0xFF;
+                domainUpDown2.SelectedIndex = 0x00 ^ 0xFF;
+                domainUpDown5.SelectedIndex = 0x00 ^ 0xFF;
+                domainUpDown6.SelectedIndex = 0x00 ^ 0xFF;
+                domainUpDown7.SelectedIndex = 0x00 ^ 0xFF;
+                //domainUpDown8.SelectedIndex = 0x00 ^ 0xFF;
+                //domainUpDown9.SelectedIndex = 0x00 ^ 0xFF;
+                domainUpDown10.SelectedIndex = 0x00 ^ 0xFF;
 
-			domainUpDown3.SelectedIndex = 5;
-			domainUpDown4.SelectedIndex = 11;
+                domainUpDown3.SelectedIndex = 5;
+                domainUpDown4.SelectedIndex = 11;
 
-			enableNoiseToolStripMenuItem.SelectedIndex = 0;
+                enableNoiseToolStripMenuItem.SelectedIndex = 0;
 
-			comboBox1.SelectedIndex = 0;
+                comboBox1.SelectedIndex = 0;
 
-            IsPlaying = false;
-            IsPaused = false;
+                IsPlaying = false;
+                IsPaused = false;
 
-            // 1 12 18 24 30 36 42 48
-            // 2 11 17 23 29 35 41 47
-            // 3 10 16 22 28 34 40 46
-            // 4  9 15 21 27 33 39 45
-            // 5  8 14 20 26 32 38 44
-            // 6  7 13 19 25 31 37 43
+                // 1 12 18 24 30 36 42 48
+                // 2 11 17 23 29 35 41 47
+                // 3 10 16 22 28 34 40 46
+                // 4  9 15 21 27 33 39 45
+                // 5  8 14 20 26 32 38 44
+                // 6  7 13 19 25 31 37 43
 
-            leftVolume = new VerticalProgressBar[] { verticalProgressBar1, };//verticalProgressBar12, verticalProgressBar18, verticalProgressBar24, verticalProgressBar30, verticalProgressBar36, verticalProgressBar42, verticalProgressBar48 };
-            rightVolume = new VerticalProgressBar[] { verticalProgressBar2, };//verticalProgressBar11, verticalProgressBar17, verticalProgressBar23, verticalProgressBar29, verticalProgressBar35, verticalProgressBar41, verticalProgressBar47 };
-            pitch = new VerticalProgressBar[]       { verticalProgressBar3, };//verticalProgressBar10, verticalProgressBar16, verticalProgressBar22, verticalProgressBar28, verticalProgressBar34, verticalProgressBar40, verticalProgressBar46 };
-            envelope = new VerticalProgressBar[]    { verticalProgressBar4, };//verticalProgressBar9 , verticalProgressBar15, verticalProgressBar21, verticalProgressBar27, verticalProgressBar33, verticalProgressBar39, verticalProgressBar45 };
-            leftLevel = new VerticalProgressBar[]   { verticalProgressBar5, };//verticalProgressBar8 , verticalProgressBar14, verticalProgressBar20, verticalProgressBar26, verticalProgressBar32, verticalProgressBar38, verticalProgressBar44 };
-            rightLevel = new VerticalProgressBar[]  { verticalProgressBar6, };//verticalProgressBar7 , verticalProgressBar13, verticalProgressBar19, verticalProgressBar25, verticalProgressBar31, verticalProgressBar37, verticalProgressBar43 };
-            dspFlags = new AM4Player.DSPFrags[] { dspFrags1, };//dspFrags2, dspFrags3, dspFrags4, dspFrags5, dspFrags6, dspFrags7, dspFrags8 };
+                leftVolume = new VerticalProgressBar[] { verticalProgressBar1, };//verticalProgressBar12, verticalProgressBar18, verticalProgressBar24, verticalProgressBar30, verticalProgressBar36, verticalProgressBar42, verticalProgressBar48 };
+                rightVolume = new VerticalProgressBar[] { verticalProgressBar2, };//verticalProgressBar11, verticalProgressBar17, verticalProgressBar23, verticalProgressBar29, verticalProgressBar35, verticalProgressBar41, verticalProgressBar47 };
+                pitch = new VerticalProgressBar[]       { verticalProgressBar3, };//verticalProgressBar10, verticalProgressBar16, verticalProgressBar22, verticalProgressBar28, verticalProgressBar34, verticalProgressBar40, verticalProgressBar46 };
+                envelope = new VerticalProgressBar[]    { verticalProgressBar4, };//verticalProgressBar9 , verticalProgressBar15, verticalProgressBar21, verticalProgressBar27, verticalProgressBar33, verticalProgressBar39, verticalProgressBar45 };
+                leftLevel = new VerticalProgressBar[]   { verticalProgressBar5, };//verticalProgressBar8 , verticalProgressBar14, verticalProgressBar20, verticalProgressBar26, verticalProgressBar32, verticalProgressBar38, verticalProgressBar44 };
+                rightLevel = new VerticalProgressBar[]  { verticalProgressBar6, };//verticalProgressBar7 , verticalProgressBar13, verticalProgressBar19, verticalProgressBar25, verticalProgressBar31, verticalProgressBar37, verticalProgressBar43 };
+                dspFlags = new AM4Player.DSPFrags[] { dspFrags1, };//dspFrags2, dspFrags3, dspFrags4, dspFrags5, dspFrags6, dspFrags7, dspFrags8 };
 
-            UpdateExternalOrNot();
-            ReAssignAudioOptions();
+                UpdateExternalOrNot();
+                ReAssignAudioOptions();
 
-            dumpBRRToolStripMenuItem.Enabled = false;
-            playToolStripMenuItem.Enabled = false;
-            stopToolStripMenuItem.Enabled = false;
-            restartToolStripMenuItem.Enabled = false;
-            button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button5.Enabled = false;
-            button6.Enabled = false;
+                dumpBRRToolStripMenuItem.Enabled = false;
+                playToolStripMenuItem.Enabled = false;
+                stopToolStripMenuItem.Enabled = false;
+                restartToolStripMenuItem.Enabled = false;
+                button1.Enabled = false;
+                button2.Enabled = false;
+                button3.Enabled = false;
+                button5.Enabled = false;
+                button6.Enabled = false;
 
 
-            fusionTrackBar7.Enabled = false;
-            fusionTrackBar8.Enabled = false;
-            fusionTrackBar9.Enabled = false;
-            fusionTrackBar10.Enabled = false;
-            domainUpDown12.Enabled = false;
-            domainUpDown11.Enabled = false;
-            domainUpDown13.Enabled = false;
-            domainUpDown14.Enabled = false;
+                fusionTrackBar7.Enabled = false;
+                fusionTrackBar8.Enabled = false;
+                fusionTrackBar9.Enabled = false;
+                fusionTrackBar10.Enabled = false;
+                domainUpDown12.Enabled = false;
+                domainUpDown11.Enabled = false;
+                domainUpDown13.Enabled = false;
+                domainUpDown14.Enabled = false;
 
-            fusionTrackBar5.Enabled = false;
-            domainUpDown10.Enabled = false;
+                fusionTrackBar5.Enabled = false;
+                domainUpDown10.Enabled = false;
 
-            bool success = false;
+                bool success = false;
 
         loop1:
-            success = false;
-            foreach (ToolStripMenuItem item in volumeToolStripMenuItem.DropDownItems)
-            {
-                if ((0x10000 * Convert.ToDouble((string)item.Tag) / 100) == Options.Volume)
+                success = false;
+                foreach (ToolStripMenuItem item in volumeToolStripMenuItem.DropDownItems)
                 {
-                    item.Checked = true;
-                    success = true;
-                    break;
+                        if ((0x10000 * Convert.ToDouble((string)item.Tag) / 100) == Options.Volume)
+                        {
+                                item.Checked = true;
+                                success = true;
+                                break;
+                        }
                 }
-            }
 
-            if (!success)
-            {
-                Options.Volume = 0x10000;
-                goto loop1;
-            }
+                if (!success)
+                {
+                        Options.Volume = 0x10000;
+                        goto loop1;
+                }
 
         loop2:
-            success = false;
-            foreach (ToolStripMenuItem item in interpolationToolStripMenuItem.DropDownItems)
-            {
-                if (((Interpolation)Convert.ToInt32(item.Tag)) == Options.INTERPOLATION)
+                success = false;
+                foreach (ToolStripMenuItem item in interpolationToolStripMenuItem.DropDownItems)
                 {
-                    item.Checked = true;
-                    success = true;
-                    break;
+                        if (((Interpolation)Convert.ToInt32(item.Tag)) == Options.INTERPOLATION)
+                        {
+                                item.Checked = true;
+                                success = true;
+                                break;
+                        }
                 }
-            }
 
-            if (!success)
-            {
-                Options.INTERPOLATION = Interpolation.INT_GAUSS;
-                goto loop2;
-            }
+                if (!success)
+                {
+                        Options.INTERPOLATION = Interpolation.INT_GAUSS;
+                        goto loop2;
+                }
 
-            timer1.Interval = Program.GetRate();
+                timer1.Interval = Program.GetRate();
 
-            if (args.Length == 1)
-            {
-				try
-				{
-					Open(args[0]);
-					Play();
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show(ex.Message, "BRR Player", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
-            }
+                if (args.Length == 1)
+                {
+                        try
+                        {
+                                Open(args[0]);
+                                Play();
+                        }
+                        catch (Exception ex)
+                        {
+                                MessageBox.Show(ex.Message, "BRR Player", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                }
         }
 
         private void ReAssignAudioOptions()

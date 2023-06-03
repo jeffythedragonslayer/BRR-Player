@@ -95,22 +95,22 @@ namespace AM4Play
             }
         }
 
-		public bool NotGrayed
-		{
-			get
-			{
-				return nograyed;
-			}
-			set
-			{
-                if (nograyed != value)
+        public bool NotGrayed
+        {
+                get
                 {
-                    nograyed = value;
-                    RedrawColorBuffer();
-                    Invalidate();
+                        return nograyed;
                 }
-			}
-		}
+                set
+                {
+        if (nograyed != value)
+        {
+            nograyed = value;
+            RedrawColorBuffer();
+            Invalidate();
+        }
+                }
+        }
 
         public bool InvertColors
         {

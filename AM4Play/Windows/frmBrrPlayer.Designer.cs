@@ -1596,7 +1596,7 @@
                 this.volumeFinderToolStripMenuItem.Text = "Volume Finder...";
                 this.volumeFinderToolStripMenuItem.Click += new System.EventHandler(this.volumeFinderToolStripMenuItem_Click);
                 // 
-                // Form6
+                // frmBrrPlayer
                 // 
                 this.AllowDrop = true;
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1656,7 +1656,7 @@
                 this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
                 this.MainMenuStrip = this.menuStrip1;
                 this.MaximizeBox = false;
-                this.Name = "Form6";
+                this.Name = "frmBrrPlayer";
                 this.Text = "BRR Player v1.0";
                 this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form6_FormClosing);
                 this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form6_DragDrop);

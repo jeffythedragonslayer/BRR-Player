@@ -13,7 +13,7 @@ namespace AM4Play
             SetStyle(ControlStyles.AllPaintingInWmPaint
                    | ControlStyles.UserPaint
                    | ControlStyles.OptimizedDoubleBuffer
-				   | ControlStyles.SupportsTransparentBackColor, true);
+                   | ControlStyles.SupportsTransparentBackColor, true);
         }
 
         public int MinValue
@@ -177,8 +177,8 @@ namespace AM4Play
         Color xorColor = Color.Gray;
         Color xorEndColor = Color.Gray;
 
-		// bools
-		bool nograyed = true;
+        // bools
+        bool nograyed = true;
         bool invert = false;
 
         // buffer

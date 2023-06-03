@@ -18,11 +18,11 @@ namespace AM4Play
 {
     public partial class frmBrrPlayer : Form
     {
-		int PitchMultiplier = 3;
-		int PitchSubMultiplier = 0;
-		int PitchNote = 0;
-		int PitchDSP = 0x1000;
-		int PitchTuning = 0x00;
+        int PitchMultiplier = 3;
+        int PitchSubMultiplier = 0;
+        int PitchNote = 0;
+        int PitchDSP = 0x1000;
+        int PitchTuning = 0x00;
 
         #region (Un)Initializer
         public frmBrrPlayer(string[] args)
@@ -69,7 +69,7 @@ namespace AM4Play
             // 5  8 14 20 26 32 38 44
             // 6  7 13 19 25 31 37 43
 
-			leftVolume = new VerticalProgressBar[] { verticalProgressBar1, };//verticalProgressBar12, verticalProgressBar18, verticalProgressBar24, verticalProgressBar30, verticalProgressBar36, verticalProgressBar42, verticalProgressBar48 };
+            leftVolume = new VerticalProgressBar[] { verticalProgressBar1, };//verticalProgressBar12, verticalProgressBar18, verticalProgressBar24, verticalProgressBar30, verticalProgressBar36, verticalProgressBar42, verticalProgressBar48 };
             rightVolume = new VerticalProgressBar[] { verticalProgressBar2, };//verticalProgressBar11, verticalProgressBar17, verticalProgressBar23, verticalProgressBar29, verticalProgressBar35, verticalProgressBar41, verticalProgressBar47 };
             pitch = new VerticalProgressBar[]       { verticalProgressBar3, };//verticalProgressBar10, verticalProgressBar16, verticalProgressBar22, verticalProgressBar28, verticalProgressBar34, verticalProgressBar40, verticalProgressBar46 };
             envelope = new VerticalProgressBar[]    { verticalProgressBar4, };//verticalProgressBar9 , verticalProgressBar15, verticalProgressBar21, verticalProgressBar27, verticalProgressBar33, verticalProgressBar39, verticalProgressBar45 };
@@ -80,28 +80,28 @@ namespace AM4Play
             UpdateExternalOrNot();
             ReAssignAudioOptions();
 
-			dumpBRRToolStripMenuItem.Enabled = false;
+            dumpBRRToolStripMenuItem.Enabled = false;
             playToolStripMenuItem.Enabled = false;
             stopToolStripMenuItem.Enabled = false;
             restartToolStripMenuItem.Enabled = false;
             button1.Enabled = false;
             button2.Enabled = false;
-			button3.Enabled = false;
-			button5.Enabled = false;
-			button6.Enabled = false;
+            button3.Enabled = false;
+            button5.Enabled = false;
+            button6.Enabled = false;
 
 
-			fusionTrackBar7.Enabled = false;
-			fusionTrackBar8.Enabled = false;
-			fusionTrackBar9.Enabled = false;
-			fusionTrackBar10.Enabled = false;
-			domainUpDown12.Enabled = false;
-			domainUpDown11.Enabled = false;
-			domainUpDown13.Enabled = false;
-			domainUpDown14.Enabled = false;
+            fusionTrackBar7.Enabled = false;
+            fusionTrackBar8.Enabled = false;
+            fusionTrackBar9.Enabled = false;
+            fusionTrackBar10.Enabled = false;
+            domainUpDown12.Enabled = false;
+            domainUpDown11.Enabled = false;
+            domainUpDown13.Enabled = false;
+            domainUpDown14.Enabled = false;
 
-			fusionTrackBar5.Enabled = false;
-			domainUpDown10.Enabled = false;
+            fusionTrackBar5.Enabled = false;
+            domainUpDown10.Enabled = false;
 
             bool success = false;
 

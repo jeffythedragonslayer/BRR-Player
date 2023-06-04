@@ -1535,14 +1535,14 @@ SNES APU - ©2003-04 Alpha-II Productions, 2001-2012 degrade-factory";
                             IsPaused = false;
 
                             playToolStripMenuItem.Enabled = true;
-							stopToolStripMenuItem.Enabled = true;
-							dumpBRRToolStripMenuItem.Enabled = true;
+                            stopToolStripMenuItem.Enabled = true;
+                            dumpBRRToolStripMenuItem.Enabled = true;
                             restartToolStripMenuItem.Enabled = true;
                             button1.Enabled = true;
                             button2.Enabled = true;
-							button3.Enabled = true;
-							button5.Enabled = true;
-							button6.Enabled = true;
+                            button3.Enabled = true;
+                            button5.Enabled = true;
+                            button6.Enabled = true;
                         }
                         catch (Exception e)
                         {
